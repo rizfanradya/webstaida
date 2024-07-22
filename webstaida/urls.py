@@ -35,7 +35,7 @@ urlpatterns = [
         url='/static/img/favicon.ico')),
     re_path('static/(?P<path>.*)', serve,
             {'document_root': settings.STATIC_ROOT}),
-    path('django/admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', landing_page_view, name='landing_page'),
     path('profile/', profile_view, name='profile'),
     path('akademik/', akademik_view, name='akademik'),
