@@ -1,13 +1,11 @@
 {% extends "./base.html" %}{% load static %}{% block body %}
 <div class="fixed z-50 w-screen bg-[#FFD18E]">
   <div
-    class="flex items-center justify-between w-full p-2 navbar-start max-w-[96vw] m-auto"
+    class="flex items-center justify-between w-full px-16 py-2 m-auto navbar-start"
   >
-    <a href="{% url 'landing_page' %}" class="text-xs font-bold">
-      STAI DARUSSALAM SUMSEL
-    </a>
+    <div></div>
 
-    <ul class="flex gap-4 text-sm font-semibold">
+    <ul class="flex gap-4 text-lg font-semibold">
       <li>
         <a href="{% url 'landing_page' %}">Home</a>
       </li>
@@ -15,12 +13,12 @@
         <a href="{% url 'profile' %}">Profile</a>
       </li>
       <li>
-        <a href="#"><i class="fa-solid fa-magnifying-glass"></i> Cari</a>
+        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
       </li>
     </ul>
   </div>
 
-  <div class="navbar h-10 bg-[#40534C] px-4 text-white">
+  <div class="navbar h-10 bg-[#40534C] px-4 lg:px-12 text-white">
     <div class="flex justify-between w-full navbar-start">
       <a
         href="{% url 'landing_page' %}"
@@ -52,9 +50,7 @@
       <ul class="px-1 menu menu-horizontal">
         {% for item in list_item %}
         <li>
-          <a class="p-4 text-[16px]" href="{% url item.href %}"
-            >{{ item.name }}</a
-          >
+          <a class="p-4 text-lg" href="{% url item.href %}">{{ item.name }}</a>
         </li>
         {% endfor %}
       </ul>
