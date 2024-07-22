@@ -1,0 +1,85 @@
+{% extends "./base.html" %}{% load static %}{% block body %}
+<div class="fixed z-50 navbar h-10 bg-[#40534C] px-4 text-white">
+  <div class="flex justify-between w-full navbar-start">
+    <a
+      href="{% url 'landing_page' %}"
+      class="flex items-center justify-center gap-2 text-lg font-semibold lg:text-xl"
+    >
+      <img src="{% static 'img/logo.png' %}" class="w-10" />
+      STAI DARUSSALAM SUMSEL
+    </a>
+
+    <div class="relative dropdown">
+      <div tabindex="0" role="button" class="lg:hidden">
+        <i class="fa-solid fa-bars" style="font-size: 20px"></i>
+      </div>
+
+      <ul
+        class="absolute right-0 z-10 p-2 mt-3 text-black shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+        tabindex="0"
+      >
+        {% for item in list_item %}
+        <li>
+          <a class="p-4" href="{% url item.href %}">{{ item.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="hidden navbar-center lg:flex">
+    <ul class="px-1 menu menu-horizontal">
+      {% for item in list_item %}
+      <li>
+        <a class="p-4 text-[16px]" href="{% url item.href %}"
+          >{{ item.name }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="pt-16">{% block content %}{% endblock content %}</div>
+
+<footer class="p-10 footer bg-base-200 text-base-content">
+  <aside class="items-center lg:flex">
+    <img src="{% static 'img/logo.png' %}" class="w-24" />
+    <div>
+      <h1 class="text-lg font-bold">STAI DARUSSALAM SUMATERA SELATAN</h1>
+      <p>
+        Kampus Terpadu: Jl Lintas Timur, Tugumulyo No 135, Lempuing, Ogan
+        Komering Ilir, 30657
+        <br />
+        Contact: +62 823 3013 5453
+        <br />
+        Email:
+        <a href="mailto:admin@staidasumsel.sch.id" class="underline"
+          >admin@staidasumsel.sch.id</a
+        >
+      </p>
+
+      <div class="flex gap-3 mt-6">
+        <a href="#">
+          <i class="text-3xl fa-brands fa-instagram"></i>
+        </a>
+        <a href="#">
+          <i class="text-3xl fa-brands fa-facebook"></i>
+        </a>
+        <a href="#">
+          <i class="text-3xl fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <nav>
+    <h4 class="footer-title">Layanan dan Informasi Lainnya</h4>
+    <div class="grid grid-cols-2 gap-x-8 gap-y-1">
+      {% for item in list_item %}
+      <a class="link link-hover" href="{% url item.href %}">{{ item.name }}</a>
+      {% endfor %}
+    </div>
+  </nav>
+</footer>
+{% endblock body %}

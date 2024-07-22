@@ -1,0 +1,89 @@
+{% extends "./navbar_footer.html" %}{% load static %}{% block content %}
+<section class="splide" aria-label="Splide Basic HTML Example">
+  <div class="splide__track">
+    <ul class="splide__list">
+      <li class="splide__slide">
+        <img src="{% static 'img/carousel/1.png' %}" />
+      </li>
+      <li class="splide__slide">
+        <img src="{% static 'img/carousel/2.jpg' %}" />
+      </li>
+      <li class="splide__slide">
+        <img src="{% static 'img/carousel/3.jpg' %}" />
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div
+  style="background-image: radial-gradient(circle, #323c60, #0a502e)"
+  class="px-6 py-8 text-center text-white"
+>
+  <div class="flex flex-col max-w-6xl gap-4 m-auto">
+    <h1 class="text-3xl font-bold text-center">SLOGAN</h1>
+    <h5 class="text-2xl font-semibold">Lorem Ipsum</h5>
+    <p class="text-justify">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptatibus
+      quis facere rerum soluta pariatur. Odio, harum sit quos accusantium ea
+      odit, cum nesciunt incidunt exercitationem magni ipsum quibusdam id
+      corporis consequatur ad. Non nostrum reprehenderit est quasi, ex veritatis
+      eos voluptatum nam pariatur minima deleniti sunt, praesentium eveniet?
+      Ipsam laudantium, rerum fuga exercitationem veritatis maxime et suscipit
+      labore explicabo! Error, dolor necessitatibus! Sed esse minus in,
+      perspiciatis velit possimus sapiente sunt cum, soluta, corrupti natus
+      asperiores suscipit! Pariatur asperiores nesciunt reiciendis, quod velit
+      ipsam, assumenda rerum repellat minus, deleniti praesentium officia labore
+      omnis ipsa ratione possimus sit ab earum.
+    </p>
+  </div>
+</div>
+
+<div class="flex flex-col max-w-6xl gap-4 px-4 m-auto lg:px-8 my-14">
+  <h1 class="text-3xl font-bold text-center">BERITA</h1>
+
+  <div class="flex gap-4 py-4 overflow-x-scroll">
+    {% for new in news %}
+    <div class="flex-none overflow-hidden border card bg-base-100 w-80">
+      <div class="overflow-hidden h-52">
+        <img src="{{ new.image }}" class="w-full" />
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">{{ new.title|truncatechars:30 }}</h2>
+        <p>{{ new.content|truncatechars:200 }}</p>
+        <div class="justify-end card-actions">
+          <a
+            href="{% url 'content_news' new.id %}"
+            class="btn btn-warning btn-sm"
+            >Baca Selengkapnya</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div
+  style="background-image: radial-gradient(circle, #323c60, #0a502e)"
+  class="px-6 py-8 text-center text-white"
+>
+  <div class="flex flex-col max-w-6xl gap-4 m-auto">
+    <h5 class="text-3xl font-bold text-center uppercase">
+      Pendaftaran mahasiswa baru
+    </h5>
+    <p class="text-justify">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptatibus
+      quis facere rerum soluta pariatur. Odio, harum sit quos accusantium ea
+      odit, cum nesciunt incidunt exercitationem magni ipsum quibusdam id
+      corporis consequatur ad. Non nostrum reprehenderit est quasi, ex veritatis
+      eos voluptatum nam pariatur minima deleniti sunt, praesentium eveniet?
+      Ipsam laudantium, rerum fuga exercitationem veritatis maxime et suscipit
+      labore explicabo! Error, dolor necessitatibus! Sed esse minus in,
+      perspiciatis velit possimus sapiente sunt cum, soluta, corrupti natus
+      asperiores suscipit! Pariatur asperiores nesciunt reiciendis, quod velit
+      ipsam, assumenda rerum repellat minus, deleniti praesentium officia labore
+      omnis ipsa ratione possimus sit ab earum.
+    </p>
+  </div>
+</div>
+{% endblock content %}

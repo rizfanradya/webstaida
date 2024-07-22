@@ -20,6 +20,15 @@ from django.conf import settings
 from django.views.static import serve
 from django.views.generic import RedirectView
 from django.urls import path
+from .views import (
+    landing_page_view,
+    profile_view,
+    akademik_view,
+    penelitian_view,
+    pengabdian_view,
+    mahasiswa_view,
+    content_news_view
+)
 
 urlpatterns = [
     path('favicon.ico', RedirectView.as_view(
@@ -27,4 +36,11 @@ urlpatterns = [
     re_path('static/(?P<path>.*)', serve,
             {'document_root': settings.STATIC_ROOT}),
     path('django/admin/', admin.site.urls),
+    path('', landing_page_view, name='landing_page'),
+    path('profile/', profile_view, name='profile'),
+    path('akademik/', akademik_view, name='akademik'),
+    path('penelitian/', penelitian_view, name='penelitian'),
+    path('pengabdian/', pengabdian_view, name='pengabdian'),
+    path('mahasiswa/', mahasiswa_view, name='mahasiswa'),
+    path('news/<int:id>/', content_news_view, name='content_news'),
 ]
