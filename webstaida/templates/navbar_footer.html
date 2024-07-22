@@ -1,46 +1,68 @@
 {% extends "./base.html" %}{% load static %}{% block body %}
-<div class="fixed z-50 navbar h-10 bg-[#40534C] px-4 text-white">
-  <div class="flex justify-between w-full navbar-start">
-    <a
-      href="{% url 'landing_page' %}"
-      class="flex items-center justify-center gap-2 text-lg font-semibold lg:text-xl"
-    >
-      <img src="{% static 'img/logo.png' %}" class="w-10" />
+<div class="fixed z-50 w-screen bg-[#FFD18E]">
+  <div
+    class="flex items-center justify-between w-full p-2 navbar-start max-w-[96vw] m-auto"
+  >
+    <a href="{% url 'landing_page' %}" class="text-xs font-bold">
       STAI DARUSSALAM SUMSEL
     </a>
 
-    <div class="relative dropdown">
-      <div tabindex="0" role="button" class="lg:hidden">
-        <i class="fa-solid fa-bars" style="font-size: 20px"></i>
-      </div>
+    <ul class="flex gap-4 text-sm font-semibold">
+      <li>
+        <a href="{% url 'landing_page' %}">Home</a>
+      </li>
+      <li>
+        <a href="{% url 'profile' %}">Profile</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-magnifying-glass"></i> Cari</a>
+      </li>
+    </ul>
+  </div>
 
-      <ul
-        class="absolute right-0 z-10 p-2 mt-3 text-black shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-        tabindex="0"
+  <div class="navbar h-10 bg-[#40534C] px-4 text-white">
+    <div class="flex justify-between w-full navbar-start">
+      <a
+        href="{% url 'landing_page' %}"
+        class="flex items-center justify-center gap-2 text-lg font-semibold lg:text-xl"
       >
+        <img src="{% static 'img/logo.png' %}" class="w-10" />
+        STAI DARUSSALAM SUMSEL
+      </a>
+
+      <div class="relative dropdown">
+        <div tabindex="0" role="button" class="lg:hidden">
+          <i class="fa-solid fa-bars" style="font-size: 20px"></i>
+        </div>
+
+        <ul
+          class="absolute right-0 z-10 p-2 mt-3 text-black shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+          tabindex="0"
+        >
+          {% for item in list_item %}
+          <li>
+            <a class="p-4" href="{% url item.href %}">{{ item.name }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="hidden navbar-center lg:flex">
+      <ul class="px-1 menu menu-horizontal">
         {% for item in list_item %}
         <li>
-          <a class="p-4" href="{% url item.href %}">{{ item.name }}</a>
+          <a class="p-4 text-[16px]" href="{% url item.href %}"
+            >{{ item.name }}</a
+          >
         </li>
         {% endfor %}
       </ul>
     </div>
   </div>
-
-  <div class="hidden navbar-center lg:flex">
-    <ul class="px-1 menu menu-horizontal">
-      {% for item in list_item %}
-      <li>
-        <a class="p-4 text-[16px]" href="{% url item.href %}"
-          >{{ item.name }}</a
-        >
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
 </div>
 
-<div class="pt-16">{% block content %}{% endblock content %}</div>
+<div class="pt-[100px]">{% block content %}{% endblock content %}</div>
 
 <footer class="p-10 footer bg-base-200 text-base-content">
   <aside class="items-center lg:flex">

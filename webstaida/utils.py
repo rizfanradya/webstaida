@@ -10,8 +10,6 @@ def get_image_filename(instance, filename):
 
 def nav_link():
     return [
-        {'name': 'Home', 'href': 'landing_page'},
-        {'name': 'Profile', 'href': 'profile'},
         {'name': 'Akademik', 'href': 'akademik'},
         {'name': 'Penelitian', 'href': 'penelitian'},
         {'name': 'Pengabdian', 'href': 'pengabdian'},
