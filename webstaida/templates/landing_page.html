@@ -49,7 +49,6 @@
 
 <div class="flex flex-col max-w-6xl gap-4 px-4 m-auto lg:px-8 my-14">
   <h1 class="text-3xl font-bold text-center">BERITA</h1>
-
   <div class="flex gap-4 py-4 overflow-x-scroll">
     {% for new in news %}
     <div class="flex-none overflow-hidden border card bg-base-100 w-80">
@@ -74,7 +73,7 @@
 
 <div
   style="background-image: radial-gradient(circle, #323c60, #0a502e)"
-  class="px-6 py-8 text-center text-white"
+  class="px-6 py-16 text-center text-white"
 >
   <div class="flex flex-col max-w-6xl gap-4 m-auto">
     <h5 class="text-3xl font-bold text-center uppercase">
@@ -96,16 +95,58 @@
   </div>
 </div>
 
-<div class="px-6 py-10 text-center bg-[#F6B800] text-[#004029]">
+<div class="px-6 py-16 text-center bg-[#F6B800] text-[#004029]">
   <div class="flex flex-col max-w-3xl gap-16 m-auto">
     <h5 class="text-3xl font-bold text-center uppercase">Program</h5>
     <div class="flex flex-wrap items-center justify-center gap-20">
       {% for item in list_program %}
       <div class="flex flex-col items-center justify-center w-40 gap-6">
-        <i class="{{ item.icon }} text-8xl"></i>
-        <p class="text-xl font-bold capitalize">{{ item.name }}</p>
+        <i class="{{ item.icon }} text-7xl"></i>
+        <p class="text-lg font-bold capitalize">{{ item.name }}</p>
       </div>
       {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="px-6 py-16 text-center">
+  <div class="flex flex-col max-w-6xl gap-8 m-auto">
+    <h5 class="text-3xl font-bold text-center uppercase text-[#932520]">
+      Lebih Dekat Dengan Mahasiswa dan Dosen STAIDA
+    </h5>
+    <p class="text-xl">
+      Universitas STAI Darussalam Sumsel memfasilitasi mahasiswa/ wi dengan
+      menghadirkan berbagai Unit Kegiatan Mahasiswa (UKM) dan Lembaga Mahasiswa
+      guna mencetak mahasiswa/ wi berprestasi serta mengenal seluruh dosen di
+      universitas lebih dekat.
+    </p>
+    <div
+      class="flex flex-wrap items-center justify-center gap-10 mt-10 lg:gap-20"
+    >
+      <div
+        class="w-full max-w-xs overflow-hidden rounded-3xl"
+        style="box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.5)"
+      >
+        <div class="bg-[#F6B800] py-8 mb-8 font-bold text-3xl text-white">
+          Mahasiswa
+        </div>
+        <img
+          src="{% static 'img/icons/user-graduate.png' %}"
+          class="pt-4 pb-16 m-auto w-28"
+        />
+      </div>
+      <div
+        class="w-full max-w-xs overflow-hidden rounded-3xl"
+        style="box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.5)"
+      >
+        <div class="bg-[#F6B800] py-8 mb-8 font-bold text-3xl text-white">
+          Dosen
+        </div>
+        <img
+          src="{% static 'img/icons/user-tie.png' %}"
+          class="pt-4 pb-16 m-auto w-28"
+        />
+      </div>
     </div>
   </div>
 </div>
