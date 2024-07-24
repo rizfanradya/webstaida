@@ -21,7 +21,7 @@ from django.views.static import serve
 from django.views.generic import RedirectView
 from django.urls import path
 from .views import (
-    landing_page_view,
+    dashboard_view,
     profile_view,
     akademik_view,
     penelitian_view,
@@ -36,7 +36,7 @@ urlpatterns = [
     re_path('static/(?P<path>.*)', serve,
             {'document_root': settings.STATIC_ROOT}),
     path('admin/', admin.site.urls),
-    path('', landing_page_view, name='landing_page'),
+    path('', dashboard_view, name='dashboard'),
     path('profile/', profile_view, name='profile'),
     path('akademik/', akademik_view, name='akademik'),
     path('penelitian/', penelitian_view, name='penelitian'),

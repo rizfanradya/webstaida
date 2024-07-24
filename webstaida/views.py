@@ -4,10 +4,10 @@ from .models import News
 from .utils import nav_link
 
 
-def landing_page_view(request: HttpRequest):
-    template_name = 'landing_page.html'
+def dashboard_view(request: HttpRequest):
+    template_name = 'dashboard.html'
     extra_context = {
-        'title': 'Landing Page',
+        'title': 'Dashboard',
         'news': News.objects.all(),
         'list_item': nav_link(),
         'list_program': [
