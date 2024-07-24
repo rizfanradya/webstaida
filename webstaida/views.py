@@ -9,7 +9,33 @@ def landing_page_view(request: HttpRequest):
     extra_context = {
         'title': 'Landing Page',
         'news': News.objects.all(),
-        'list_item': nav_link()
+        'list_item': nav_link(),
+        'list_program': [
+            {
+                'name': 'ekonomi',
+                'icon': 'fa-solid fa-scale-balanced'
+            },
+            {
+                'name': 'perbankan',
+                'icon': 'fa-solid fa-landmark'
+            },
+            {
+                'name': 'pendidikan agama islam',
+                'icon': 'fa-solid fa-book-quran'
+            },
+            {
+                'name': 'manajemen pendidikan islam',
+                'icon': 'fa-solid fa-mosque'
+            },
+            {
+                'name': 'bahasa inggris',
+                'icon': 'fa-solid fa-globe'
+            },
+            {
+                'name': 'bahasa indonesia',
+                'icon': 'fa-solid fa-earth-americas'
+            }
+        ]
     }
     return render(request, template_name, extra_context)
 
