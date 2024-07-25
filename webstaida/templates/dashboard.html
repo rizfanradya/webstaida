@@ -1,5 +1,9 @@
 {% extends "./navbar_footer.html" %}{% load static %}{% block content %}
-<section class="splide" aria-label="Splide Basic HTML Example">
+<section
+  class="splide"
+  id="splide_dashboard"
+  aria-label="Splide Basic HTML Example"
+>
   <div class="splide__track">
     <ul class="splide__list">
       <li class="splide__slide">
@@ -49,30 +53,41 @@
 
 <div class="flex flex-col max-w-6xl gap-4 px-4 m-auto lg:px-8 my-14">
   <h1 class="text-3xl font-bold text-center">BERITA</h1>
-  <div class="flex gap-4 py-4 overflow-x-scroll lg:gap-8">
-    {% for new in news %}
-    <div
-      class="flex-none overflow-hidden border card bg-base-100 w-80 h-[420px] rounded-3xl"
-      style="box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.5)"
+  <div class="flex items-center justify-center gap-4 py-4 lg:gap-8">
+    <section
+      class="w-full splide"
+      id="splide_news"
+      aria-label="Splide Basic HTML Example"
     >
-      <div class="overflow-hidden h-52">
-        <img src="{{ new.image }}" class="w-full" />
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for new in news %}
+          <li class="splide__slide">
+            <div
+              class="flex-none overflow-hidden border shadow-xl card bg-base-100 w-80 h-[420px] rounded-3xl"
+            >
+              <div class="overflow-hidden h-52">
+                <img src="{{ new.image }}" class="w-full" />
+              </div>
+              <div class="relative gap-4 card-body">
+                <a
+                  href="{% url 'content_news' new.id %}"
+                  class="card-title text-[#004029] hover:text-[#F6B800] transition duration-300"
+                >
+                  {{ new.title|truncatechars:70 }}
+                </a>
+                <div class="absolute bottom-0 left-0 mx-8 my-4 card-actions">
+                  <p class="font-semibold text-[18px] text-gray-600">
+                    {{ new.created_at|date }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
       </div>
-      <div class="relative gap-4 card-body">
-        <a
-          href="{% url 'content_news' new.id %}"
-          class="card-title text-[#004029] hover:text-[#F6B800] transition duration-300"
-        >
-          {{ new.title|truncatechars:70 }}
-        </a>
-        <div class="absolute bottom-0 left-0 mx-8 my-4 card-actions">
-          <p class="font-semibold text-[18px] text-gray-600">
-            {{ new.created_at|date }}
-          </p>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
+    </section>
   </div>
 </div>
 
