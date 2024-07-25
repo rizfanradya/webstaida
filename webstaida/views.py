@@ -2,13 +2,26 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from .models import News
 from .utils import nav_link
+import os
+from .settings import BASE_DIR
 
 
 def dashboard_view(request: HttpRequest):
+    data_news = News.objects.all()
+    folder_news = os.path.join(BASE_DIR, 'static/img/news')
+    db_list_files = [
+        news.image.name.split('/')[-1] for news in data_news if news.image
+    ]
+    local_list_files = os.listdir(folder_news)
+    files_to_delete = [f for f in local_list_files if f not in db_list_files]
+    for file_name in files_to_delete:
+        file_path = os.path.join(folder_news, file_name)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
     template_name = 'dashboard.html'
     extra_context = {
         'title': 'Dashboard',
-        'news': News.objects.all(),
+        'news': data_news,
         'list_item': nav_link(),
         'list_program': [
             {
