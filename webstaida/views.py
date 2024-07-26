@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.decorators.cache import never_cache
 from django.http import HttpRequest
 from .models import News
 from .utils import nav_link
@@ -53,6 +54,7 @@ def dashboard_view(request: HttpRequest):
     return render(request, template_name, extra_context)
 
 
+@never_cache
 def profile_view(request: HttpRequest):
     template_name = 'profile.html'
     extra_context = {
@@ -62,6 +64,7 @@ def profile_view(request: HttpRequest):
     return render(request, template_name, extra_context)
 
 
+@never_cache
 def akademik_view(request: HttpRequest):
     template_name = 'akademik.html'
     extra_context = {
@@ -71,6 +74,7 @@ def akademik_view(request: HttpRequest):
     return render(request, template_name, extra_context)
 
 
+@never_cache
 def penelitian_view(request: HttpRequest):
     template_name = 'penelitian.html'
     extra_context = {
@@ -80,6 +84,7 @@ def penelitian_view(request: HttpRequest):
     return render(request, template_name, extra_context)
 
 
+@never_cache
 def pengabdian_view(request: HttpRequest):
     template_name = 'pengabdian.html'
     extra_context = {
@@ -89,6 +94,7 @@ def pengabdian_view(request: HttpRequest):
     return render(request, template_name, extra_context)
 
 
+@never_cache
 def mahasiswa_view(request: HttpRequest):
     template_name = 'mahasiswa.html'
     extra_context = {
@@ -98,6 +104,7 @@ def mahasiswa_view(request: HttpRequest):
     return render(request, template_name, extra_context)
 
 
+@never_cache
 def content_news_view(request: HttpRequest, id: int):
     template_name = 'content_news.html'
     extra_context = {

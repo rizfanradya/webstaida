@@ -1,13 +1,14 @@
-new Splide("#splide_dashboard", {
+const base_settings = {
   type: "loop",
-  perPage: 1,
   autoplay: true,
-}).mount();
+  arrows: false,
+};
+
+new Splide("#splide_dashboard", { ...base_settings, perPage: 1 }).mount();
 
 new Splide("#splide_news", {
-  type: "loop",
+  ...base_settings,
   perPage: 3,
-  autoplay: true,
   breakpoints: {
     768: {
       perPage: 1,
