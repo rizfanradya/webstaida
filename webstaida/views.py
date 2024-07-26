@@ -7,6 +7,7 @@ import os
 from .settings import BASE_DIR
 
 
+@never_cache
 def dashboard_view(request: HttpRequest):
     data_news = News.objects.all()
     folder_news = os.path.join(BASE_DIR, 'static/img/news')
@@ -111,5 +112,35 @@ def content_news_view(request: HttpRequest, id: int):
         'title': 'Content Berita',
         'list_item': nav_link(),
         'content': News.objects.get(id=id)
+    }
+    return render(request, template_name, extra_context)
+
+
+@never_cache
+def research_view(request: HttpRequest):
+    template_name = 'research.html'
+    extra_context = {
+        'title': 'Research',
+        'list_item': nav_link()
+    }
+    return render(request, template_name, extra_context)
+
+
+@never_cache
+def journal_view(request: HttpRequest):
+    template_name = 'journal.html'
+    extra_context = {
+        'title': 'Journal',
+        'list_item': nav_link()
+    }
+    return render(request, template_name, extra_context)
+
+
+@never_cache
+def repository_view(request: HttpRequest):
+    template_name = 'repository.html'
+    extra_context = {
+        'title': 'Repository',
+        'list_item': nav_link()
     }
     return render(request, template_name, extra_context)

@@ -27,7 +27,10 @@ from .views import (
     penelitian_view,
     pengabdian_view,
     mahasiswa_view,
-    content_news_view
+    content_news_view,
+    research_view,
+    journal_view,
+    repository_view
 )
 
 urlpatterns = [
@@ -43,4 +46,7 @@ urlpatterns = [
     path('pengabdian/', pengabdian_view, name='pengabdian'),
     path('mahasiswa/', mahasiswa_view, name='mahasiswa'),
     path('news/<int:id>/', content_news_view, name='content_news'),
+    path('research/', research_view, name='research'),
+    path('journal/', journal_view, name='journal'),
+    path('repository/', repository_view, name='repository'),
 ]
