@@ -132,3 +132,23 @@ def repository_view(request: HttpRequest):
         'list_item': nav_link()
     }
     return render(request, template_name, extra_context)
+
+
+@never_cache
+def mahasiswa_info_view(request: HttpRequest):
+    template_name = 'mahasiswa_info.html'
+    extra_context = {
+        'title': 'Mahasiswa',
+        'list_item': nav_link()
+    }
+    return render(request, template_name, extra_context)
+
+
+@never_cache
+def dosen_info_view(request: HttpRequest):
+    template_name = 'dosen_info.html'
+    extra_context = {
+        'title': 'Dosen',
+        'list_item': nav_link()
+    }
+    return render(request, template_name, extra_context)

@@ -146,8 +146,9 @@
     <div
       class="flex flex-wrap items-center justify-center gap-10 mt-10 lg:gap-20"
     >
-      <div
-        class="w-full max-w-xs overflow-hidden rounded-3xl"
+      <a
+        href="{% url 'mahasiswa_info' %}"
+        class="w-full max-w-xs overflow-hidden transition duration-300 rounded-3xl hover:opacity-80"
         style="box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.5)"
       >
         <div class="bg-[#F6B800] py-8 mb-8 font-bold text-3xl text-white">
@@ -157,9 +158,10 @@
           src="{% static 'img/icons/user-graduate.png' %}"
           class="pt-4 pb-16 m-auto w-28"
         />
-      </div>
-      <div
-        class="w-full max-w-xs overflow-hidden rounded-3xl"
+      </a>
+      <a
+        href="{% url 'dosen_info' %}"
+        class="w-full max-w-xs overflow-hidden transition duration-300 rounded-3xl hover:opacity-80"
         style="box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.5)"
       >
         <div class="bg-[#F6B800] py-8 mb-8 font-bold text-3xl text-white">
@@ -169,7 +171,7 @@
           src="{% static 'img/icons/user-tie.png' %}"
           class="pt-4 pb-16 m-auto w-28"
         />
-      </div>
+      </a>
     </div>
   </div>
 </div>
