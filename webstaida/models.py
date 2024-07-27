@@ -13,7 +13,7 @@ class News(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.id} {self.title}"  # type: ignore
+        return self.title
 
     def save(self, *args, **kwargs):
         try:
@@ -29,3 +29,20 @@ class News(models.Model):
 def delete_image_file(sender, instance, **kwargs):
     if instance.image:
         instance.image.delete(False)
+
+
+class Program(models.Model):
+    name = models.CharField(max_length=255)
+    icon = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+class ProgramDetail(models.Model):
+    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name

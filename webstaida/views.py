@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.cache import never_cache
 from django.http import HttpRequest
-from .models import News
+from .models import News, Program, ProgramDetail
 from .utils import nav_link
 import os
 from .settings import BASE_DIR
@@ -10,6 +10,7 @@ from .settings import BASE_DIR
 @never_cache
 def dashboard_view(request: HttpRequest):
     data_news = News.objects.all()
+    data_program = Program.objects.all()
     folder_news = os.path.join(BASE_DIR, 'static/img/news')
     db_list_files = [
         news.image.name.split('/')[-1] for news in data_news if news.image
@@ -25,32 +26,19 @@ def dashboard_view(request: HttpRequest):
         'title': 'Dashboard',
         'news': data_news,
         'list_item': nav_link(),
-        'list_program': [
-            {
-                'name': 'ekonomi',
-                'icon': 'fa-solid fa-scale-balanced'
-            },
-            {
-                'name': 'perbankan',
-                'icon': 'fa-solid fa-landmark'
-            },
-            {
-                'name': 'pendidikan agama islam',
-                'icon': 'fa-solid fa-book-quran'
-            },
-            {
-                'name': 'manajemen pendidikan islam',
-                'icon': 'fa-solid fa-mosque'
-            },
-            {
-                'name': 'bahasa inggris',
-                'icon': 'fa-solid fa-globe'
-            },
-            {
-                'name': 'bahasa indonesia',
-                'icon': 'fa-solid fa-earth-americas'
-            }
-        ]
+        'list_program': data_program
+    }
+    return render(request, template_name, extra_context)
+
+
+@never_cache
+def program_view(request: HttpRequest, id: int):
+    template_name = 'program.html'
+    extra_context = {
+        'title': 'Program',
+        'list_item': nav_link(),
+        'program': Program.objects.get(id=id),
+        'program_detail': ProgramDetail.objects.filter(program_id=id)
     }
     return render(request, template_name, extra_context)
 
