@@ -1,26 +1,15 @@
 from django.shortcuts import render
 from django.views.decorators.cache import never_cache
 from django.http import HttpRequest
-from .models import News, Program, ProgramDetail
-from .utils import nav_link
-import os
-from .settings import BASE_DIR
+from .models import News, Program, ProgramDetail, Journal
+from .utils import nav_link, file_management
 
 
 @never_cache
 def dashboard_view(request: HttpRequest):
     data_news = News.objects.all()
     data_program = Program.objects.all()
-    folder_news = os.path.join(BASE_DIR, 'static/img/news')
-    db_list_files = [
-        news.image.name.split('/')[-1] for news in data_news if news.image
-    ]
-    local_list_files = os.listdir(folder_news)
-    files_to_delete = [f for f in local_list_files if f not in db_list_files]
-    for file_name in files_to_delete:
-        file_path = os.path.join(folder_news, file_name)
-        if os.path.isfile(file_path):
-            os.remove(file_path)
+    file_management(data_news, 'news')
     template_name = 'dashboard.html'
     extra_context = {
         'title': 'Dashboard',
@@ -94,6 +83,16 @@ def mahasiswa_view(request: HttpRequest):
 
 
 @never_cache
+def dosen_view(request: HttpRequest):
+    template_name = 'dosen.html'
+    extra_context = {
+        'title': 'Dosen',
+        'list_item': nav_link()
+    }
+    return render(request, template_name, extra_context)
+
+
+@never_cache
 def content_news_view(request: HttpRequest, id: int):
     template_name = 'content_news.html'
     extra_context = {
@@ -116,10 +115,24 @@ def research_view(request: HttpRequest):
 
 @never_cache
 def journal_view(request: HttpRequest):
+    data_journal = Journal.objects.all()
+    file_management(data_journal, 'journal')
     template_name = 'journal.html'
     extra_context = {
         'title': 'Journal',
-        'list_item': nav_link()
+        'list_item': nav_link(),
+        'journals': data_journal
+    }
+    return render(request, template_name, extra_context)
+
+
+@never_cache
+def journal_detail_view(request: HttpRequest, id: int):
+    template_name = 'journal_detail.html'
+    extra_context = {
+        'title': 'Journal',
+        'list_item': nav_link(),
+        'content': Journal.objects.get(id=id)
     }
     return render(request, template_name, extra_context)
 
@@ -129,26 +142,6 @@ def repository_view(request: HttpRequest):
     template_name = 'repository.html'
     extra_context = {
         'title': 'Repository',
-        'list_item': nav_link()
-    }
-    return render(request, template_name, extra_context)
-
-
-@never_cache
-def mahasiswa_info_view(request: HttpRequest):
-    template_name = 'mahasiswa_info.html'
-    extra_context = {
-        'title': 'Mahasiswa',
-        'list_item': nav_link()
-    }
-    return render(request, template_name, extra_context)
-
-
-@never_cache
-def dosen_info_view(request: HttpRequest):
-    template_name = 'dosen_info.html'
-    extra_context = {
-        'title': 'Dosen',
         'list_item': nav_link()
     }
     return render(request, template_name, extra_context)

@@ -32,8 +32,8 @@ from .views import (
     journal_view,
     repository_view,
     program_view,
-    mahasiswa_info_view,
-    dosen_info_view
+    dosen_view,
+    journal_detail_view
 )
 
 urlpatterns = [
@@ -41,18 +41,18 @@ urlpatterns = [
         url='/static/img/favicon.ico')),
     re_path('static/(?P<path>.*)', serve,
             {'document_root': settings.STATIC_ROOT}),
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('', dashboard_view, name='dashboard'),
-    path('profile/', profile_view, name='profile'),
-    path('akademik/', akademik_view, name='akademik'),
-    path('penelitian/', penelitian_view, name='penelitian'),
-    path('pengabdian/', pengabdian_view, name='pengabdian'),
-    path('mahasiswa/', mahasiswa_view, name='mahasiswa'),
-    path('news/<int:id>/', content_news_view, name='content_news'),
-    path('research/', research_view, name='research'),
-    path('journal/', journal_view, name='journal'),
-    path('repository/', repository_view, name='repository'),
-    path('program/<int:id>/', program_view, name='program'),
-    path('mahasiswa_info/', mahasiswa_info_view, name='mahasiswa_info'),
-    path('dosen_info/', dosen_info_view, name='dosen_info')
+    path('profile', profile_view, name='profile'),
+    path('akademik', akademik_view, name='akademik'),
+    path('penelitian', penelitian_view, name='penelitian'),
+    path('pengabdian', pengabdian_view, name='pengabdian'),
+    path('mahasiswa', mahasiswa_view, name='mahasiswa'),
+    path('dosen', dosen_view, name='dosen'),
+    path('news/<int:id>', content_news_view, name='content_news'),
+    path('research', research_view, name='research'),
+    path('journal', journal_view, name='journal'),
+    path('journal/<int:id>', journal_detail_view, name='journal_detail'),
+    path('repository', repository_view, name='repository'),
+    path('program/<int:id>', program_view, name='program'),
 ]
