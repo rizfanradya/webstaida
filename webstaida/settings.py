@@ -75,22 +75,22 @@ WSGI_APPLICATION = 'webstaida.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'webstaida',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'yogiputr_webstaida',
-        'USER': 'yogiputr_webstaida',
-        'PASSWORD': 'FpJzKFnNzmNjj24',
+        'NAME': 'webstaida',
+        'USER': 'root',
+        'PASSWORD': 'root',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'yogiputr_webstaida',
+#         'USER': 'yogiputr_webstaida',
+#         'PASSWORD': 'FpJzKFnNzmNjj24',
+#     }
+# }
 
 
 # Password validation
